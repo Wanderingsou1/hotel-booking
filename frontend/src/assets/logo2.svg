@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="165" height="35" viewBox="0 0 512 512" fill="none">
+<!-- House/hexagon style icon -->
+<path d="M256 32L64 160v224l192 128 192-128V160L256 32z" fill="white"/>
+<path d="M256 128l128 85.3v170.7L256 469.3 128 384V213.3L256 128z" fill="black" opacity="0.2"/>
+
+
+<!-- Text: Avista -->
+<text x="280" y="300" font-family="'Poppins', 'Nunito', sans-serif" font-size="180" font-weight="600" fill="white">
+Avista
+</text>
+</svg>
