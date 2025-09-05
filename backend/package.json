@@ -13,12 +13,17 @@
   "type": "module",
   "dependencies": {
     "@clerk/express": "^1.7.24",
+    "axios": "^1.11.0",
+    "body-parser": "^2.2.0",
     "cloudinary": "^2.7.0",
     "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "mongoose": "^8.18.0",
+    "mongosh": "^2.5.6",
     "multer": "^2.0.2",
+    "raw-body": "^3.0.0",
     "svix": "^1.74.1"
   },
   "devDependencies": {
