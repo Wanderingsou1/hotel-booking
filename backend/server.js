@@ -17,19 +17,6 @@ connectCloudinary();
 const App = express();
 App.use(cors());
 
-App.options("*", (req, res) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://avista-gold.vercel.app"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS"
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.sendStatus(200);
-});
-
 // middleware
 App.use(express.json());
 App.use(clerkMiddleware());
