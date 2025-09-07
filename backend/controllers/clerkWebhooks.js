@@ -19,40 +19,39 @@ const clearWebhooks = async (req, res) => {
     // Getting data from request body
     const { data, type } = req.body;
 
-    console.log("Checkpoint-1");
-    const userData = {
-      _id: data.id,
-      email: data.email_addresses?.[0]?.email_address || "", // optional chaining
-      username: `${data.first_name || ""} ${data.last_name || ""}`,
-      image: data.image_url || "",
-    };
-
     // Switch Cases for different events
     switch (type) {
       case "user.created": {
-        console.log("Checkpoint-2");
+        const userData = {
+        _id: data.id,
+        email: data.email_addresses?.[0]?.email_address || "", // optional chaining
+        username: `${data.first_name || ""} ${data.last_name || ""}`,
+        image: data.image_url || "",
+        };
         await User.create(userData);
         break;
       }
 
       case "user.updated": {
-        console.log("Checkpoint-3");
+        const userData = {
+        _id: data.id,
+        email: data.email_addresses?.[0]?.email_address || "", // optional chaining
+        username: `${data.first_name || ""} ${data.last_name || ""}`,
+        image: data.image_url || "",
+        };
         await User.findByIdAndUpdate(data.id, userData);
         break;
       }
 
       case "user.deleted": {
-        console.log("Checkpoint-3");
         await User.findByIdAndDelete(data.id);
         break;
       }
 
       default:
-        console.log("Checkpoint-4");
         break;
     }
 
-    console.log("Checkpoint-5");
 
     res.json({ success: true, message: "Webhook Received" });
   } catch (error) {

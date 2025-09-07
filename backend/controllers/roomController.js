@@ -13,8 +13,13 @@ export const createRoom = async (req, res) => {
       return res.status(404).json({success: false, messsage: "Hotel not found"});
     } 
 
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ success: false, message: "No images uploaded" });
+    }
+
     // Upload images to cloudinary
     const uploadImages = req.files.map(async (file) => {
+
       const response = await cloudinary.uploader.upload(file.path);
       return response.secure_url;
     })
@@ -32,6 +37,7 @@ export const createRoom = async (req, res) => {
     res.json({success: true, message: "Room created successfully"});
 
   } catch(err) {
+    console.log(err);
     res.status(500).json({success: false, message: err.message});
   }
 
@@ -50,6 +56,7 @@ export const getRooms = async (req, res) => {
     return res.json({success: true, rooms})
 
   } catch(err) {
+    console.log(err);
     return res.json({success: false, message: err.message});
   }
 
@@ -59,7 +66,7 @@ export const getRooms = async (req, res) => {
 export const getOwnerRooms = async (req, res) => {
   try {
 
-    const hotelData = await Hotel({owner: req.auth.userId});
+    const hotelData = await Hotel.findOne({owner: req.auth.userId});
     const rooms = await Room.find({hotel: hotelData._id.toString()}).populate("hotel")
 
     return res.json({success: true, rooms});
