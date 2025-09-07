@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Navbar from '../../components/hotelOwner/Navbar'
-import SideBar from '../../components/hotelOwner/SideBar'
+import SideBar from '../../components/hotelOwner/Sidebar'
 import { Outlet } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 
