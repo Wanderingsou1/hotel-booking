@@ -39,7 +39,7 @@ export const AppProvider = ({children}) => {
 
   const fetchUser = async () => {
     try {
-      const {data} = await axios.get('/api/user', {headers: {Authorization: `Bearer ${await getToken()}`}});
+      const {data} = await axios.get('/api/user', {headers: {Authorization: `Bearer ${await getToken()}`}, withCredentials: true});
 
       if(data.success) {
         setIsOwner(data.role === "hotelOwner");

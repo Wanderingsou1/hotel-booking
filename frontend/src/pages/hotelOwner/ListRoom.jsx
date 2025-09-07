@@ -12,7 +12,7 @@ const ListRoom = () => {
   // Fetch rooms from backend
   const fetchRooms = async () => {
     try {
-      const {data} = await axios.get(`/api/rooms/owner`, {headers: {Authorization: `Bearer ${await getToken()}`}});
+      const {data} = await axios.get(`/api/rooms/owner`, {headers: {Authorization: `Bearer ${await getToken()}`}, withCredentials: true});
 
       if(data.success) {
         setRooms(data.rooms);

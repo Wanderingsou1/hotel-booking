@@ -53,7 +53,7 @@ const AddRoom = () => {
       })
       console.log("Checkpoint 4");
 
-      const {data} = await axios.post('/api/rooms/', formData, {headers: {Authorization: `Bearer ${await getToken()}`}});
+      const {data} = await axios.post('/api/rooms/', formData, {headers: {Authorization: `Bearer ${await getToken()}`}, withCredentials: true});
       console.log("Checkpoint 5");
       console.log(data);
 

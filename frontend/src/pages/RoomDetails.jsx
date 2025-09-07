@@ -50,7 +50,7 @@ const RoomDetails = () => {
       if(!isAvailable) {
         return checkAvailability();
       } else {
-        const {data} = await axios.post(`/api/bookings/book`, {room: id, checkInDate, checkOutDate, guests, paymentMethod: "Pay at Hotel"}, {headers: {Authorization: `Bearer ${await getToken()}`}});
+        const {data} = await axios.post(`/api/bookings/book`, {room: id, checkInDate, checkOutDate, guests, paymentMethod: "Pay at Hotel"}, {headers: {Authorization: `Bearer ${await getToken()}`}, withCredentials: true});
 
         if(data.success) {
           toast.success(data.message);

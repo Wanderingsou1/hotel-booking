@@ -16,7 +16,7 @@ const HotelReg = () => {
 
     try {
       e.preventDefault();
-      const {data} = await axios.post(`/api/hotels/`, {name, contact, address, city}, {headers: {Authorization: `Bearer ${await getToken()}`}});
+      const {data} = await axios.post(`/api/hotels/`, {name, contact, address, city}, {headers: {Authorization: `Bearer ${await getToken()}`}, withCredentials: true});
 
       if(data.success) {
         toast.success(data.message);
