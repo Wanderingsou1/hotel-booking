@@ -15,16 +15,17 @@ connectDB();
 connectCloudinary();
 
 const App = express();
-App.use(cors({
-  origin: "https://avista-gold.vercel.app",  // your frontend URL
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"], // ✅ allow Bearer tokens
-  credentials: true
-}));
+App.use(cors());
 
 App.options("*", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://avista-gold.vercel.app");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://avista-gold.vercel.app"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.sendStatus(200);
 });
@@ -40,10 +41,10 @@ App.get("/", (req, res) => {
   res.send("API is running.");
 });
 
-App.use('/api/user', userRouter);
-App.use('/api/hotels', hotelRouter);
-App.use('/api/rooms', roomRouter)
-App.use('/api/bookings', bookingRouter)
+App.use("/api/user", userRouter);
+App.use("/api/hotels", hotelRouter);
+App.use("/api/rooms", roomRouter);
+App.use("/api/bookings", bookingRouter);
 
 const PORT = process.env.PORT || 8080;
 
